@@ -1,0 +1,33 @@
+Linux :  
+
+step 1: create folder structure "/mnt/backup"
+
+step 2: give root permission to "/mnt/backup"
+
+        # chmod 0777 -R /mnt/backup
+
+step 3: create a mysqldatabase_backup.sh
+
+        insert below code
+
+#!bin/bash
+
+#cd /mnt/backup
+
+#echo "You are In Backup Directory"
+
+#author getqueryinfo@gmail.com
+
+Now=$(date +"%d%m%Y_%H%M%S")
+
+File=aua_$Now.sql
+
+Log=aua_$Now.log
+
+mysqldump -uroot -ppassword databasename > /mnt/backup/$File 2> /mnt/backup/$Log
+
+echo "Your Database Backup Successfully Completed"
+
+Run the sh script in command line.
+
+[user@testdb ~]$./mysqldatabase_backup.sh
